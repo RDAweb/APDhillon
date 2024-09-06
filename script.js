@@ -322,10 +322,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Update the like count based on the icon's state
         if (likeIcon.classList.contains('liked')) {
-            likeCount++;
+            likeCount--;
             localStorage.setItem('liked', 'true');
         } else {
-            likeCount--;
+            likeCount++;
             localStorage.setItem('liked', 'true');
         }
 
