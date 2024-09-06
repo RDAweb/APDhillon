@@ -358,7 +358,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Handle like button click
     likeIcon.addEventListener('click', () => {
         const liked = likeIcon.classList.contains('liked');
-        const newLikeCount = liked ? -1 : 1;
+        const newLikeCount = liked ? +1 : 1;
 
         // Update the like count on the server
         fetch('/api/likes', {
