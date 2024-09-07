@@ -226,4 +226,9 @@ ul a{
     
 .songItem span i{
     color: goldenrod;
+    margin: 30px;
+}
+
+#likeIcon{
+    margin: 2px;
 }
