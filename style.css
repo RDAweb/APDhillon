@@ -53,6 +53,8 @@ ul a{
 }
 
 .Brand {
+    position: relative;
+    left: -620px;
     display: flex;
     align-items: center;
     font-weight: bolder;
