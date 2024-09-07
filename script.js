@@ -1,9 +1,6 @@
 console.log("Welcome To LOP SONGS");
 
 //Initialize the Variables
-let likeCount = 0;
-const likeIcon = document.getElementById('likeIcon');
-const likeCountDisplay = document.getElementById('likeCount');
 let songIndex = 0;
 let audioElement = new Audio('1.mp3');
 let masterPlay = document.getElementById('masterPlay');
@@ -104,6 +101,8 @@ Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=>{
             masterPlay.classList.add('fa-circle-play'); 
             masterPlay.classList.remove('fa-circle-pause')};
     })
+})
+
 document.getElementById('next').addEventListener('click', ()=>{
     if(songIndex>=16){
         songIndex=0
@@ -135,7 +134,6 @@ document.getElementById('previous').addEventListener('click', ()=>{
         masterPlay.classList.remove('fa-circle-play'); 
         masterPlay.classList.add('fa-circle-pause');
 })
-
 // Handle song end to play the next song and update the icons
 audioElement.addEventListener('ended', () => {
     // Reset the icon of the current song
@@ -298,85 +296,3 @@ const playPreviousSong = () => {
     document.getElementById(songIndex).classList.remove('fa-circle-play');
     document.getElementById(songIndex).classList.add('fa-circle-pause');
 };
-
-document.addEventListener('DOMContentLoaded', function() {
-    const likeIcon = document.getElementById('likeIcon');
-    const likeCountDisplay = document.getElementById('likeCount');
-
-    // Initialize the like count from local storage, default to 0 if not set
-    let likeCount = parseInt(localStorage.getItem('likeCount')) || 0;
-    const liked = localStorage.getItem('liked') === 'true';
-
-    // Update the UI based on stored data
-    likeCountDisplay.innerText = likeCount;
-    if (liked) {
-        likeIcon.classList.add('liked');
-    }
-
-    // Handle like button click
-    likeIcon.addEventListener('click', () => {
-        // Toggle the 'liked' class for the icon (changing its color)
-        likeIcon.classList.toggle('liked');
-        
-        // Update the like count based on the icon's state
-        if (likeIcon.classList.contains('liked')) {
-            likeCount--;
-            localStorage.setItem('liked', 'true');
-        } else {
-            likeCount++;
-            localStorage.setItem('liked', 'true');
-        }
-
-        // Update local storage with the new like count
-        localStorage.setItem('likeCount', likeCount);
-
-        // Update the like count display
-        likeCountDisplay.innerText = likeCount;
-    });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    const likeIcon = document.getElementById('likeIcon');
-    const likeCountDisplay = document.getElementById('likeCount');
-
-    // Fetch the like count and liked status from the server
-    fetch('/api/likes')
-        .then(response => response.json())
-        .then(data => {
-            const likeCount = data.likeCount;
-            const liked = data.liked;
-
-            // Update the UI based on the retrieved data
-            likeCountDisplay.innerText = likeCount;
-            if (liked) {
-                likeIcon.classList.add('liked');
-            }
-        });
-
-    // Handle like button click
-    likeIcon.addEventListener('click', () => {
-        const liked = likeIcon.classList.contains('liked');
-        const newLikeCount = liked ? -1 : 1;
-
-        // Update the like count on the server
-        fetch('/api/likes', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                increment: newLikeCount,
-                liked: !liked
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Update the UI based on the server response
-            likeCountDisplay.innerText = data.likeCount;
-            likeIcon.classList.toggle('liked');
-        });
-    });
-});
-
-})
-
