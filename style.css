@@ -39,6 +39,15 @@ ul a{
     left: 600px;
     padding-left: 30px;
 }
+.homee a{
+    margin-left: -130px;
+    padding: 10px;
+}
+
+.contt{
+    position: relative;
+    left: 750px;
+}
 
 .homee a i{
     width: 40px;
@@ -57,6 +66,8 @@ ul a{
     align-items: center;
     font-weight: bolder;
     font-size: 1.3rem;
+    position: relative;
+    left: -620px;
 }
 
 
@@ -95,8 +106,13 @@ ul a{
 
 .icons{
     position: relative;
-    top: 3vh;
+    top: 2vh;
     
+}
+@media(min-width:1000px){
+    .icons{
+        top: 3vh;
+    }
 }
 
 .icons i{
@@ -206,14 +222,8 @@ ul a{
     font-family: Permanentmarker;
     font-weight: 600;
     color:  white;
-    min-width: 200px;
 }
     
 .songItem span i{
     color: goldenrod;
-    margin: 10px;
-}
-
-#likeIcon{
-    margin: 2px;
 }
