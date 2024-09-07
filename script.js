@@ -320,10 +320,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Update the like count based on the icon's state
         if (likeIcon.classList.contains('liked')) {
-            likeCount+;
+            likeCount--;
             localStorage.setItem('liked', 'true');
         } else {
-            likeCount-;
+            likeCount++;
             localStorage.setItem('liked', 'true');
         }
 
@@ -335,8 +335,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-<<<<<<< Updated upstream
-=======
 document.addEventListener('DOMContentLoaded', function() {
     const likeIcon = document.getElementById('likeIcon');
     const likeCountDisplay = document.getElementById('likeCount');
@@ -381,4 +379,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 })
->>>>>>> Stashed changes
+
