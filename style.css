@@ -3,67 +3,128 @@
 @import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Josefin+Sans:wght@100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Permanent+Marker&display=swap');
 body{
-    background-color: rgb(41, 39, 39);
+    background-color: rgba(255, 255, 255, 0);
     user-select: none;
+    background: url('apdhillonbgm.jpg') no-repeat center center fixed;
+    background-size:cover;
+    background-attachment: fixed; /* Keeps the background fixed during scroll */
+    color: #f5f5f5; /* Light text for contrast */
+    font-family: 'Josefin Sans', sans-serif;
+    width: 100%;
 }
+
+@media(min-width:400px){
+    body{
+        font-size: 25px;
+    }
+}
+@media(min-width:1000px){
+    body{
+        background: url('apdhillonbgpc.jpg') no-repeat center center fixed;
+        background-size:cover;
+        font-size: 15px;
+    }
+}
+
+@media(min-width:600px){
+    body{
+        font-size: 20px;
+    }
+}
+
+.hmain{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    float: left;
+    background: transparent;
+    user-select: none;
+    background: transparent; /* Dark gradient header */
+}
+
+.minmain{
+    width: 1257px;
+    margin: 0;
+    padding: 0;
+}
+
+.maxmain{
+    width: 100%;
+    float: left;
+}
+
 
 *{
     margin: 0;
     padding: 0;
 }
 
-nav{
+.navbar{
     font-family: 'Ububtu',sans-serif;
-
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    backdrop-filter: blur(5px); /* Adds a blur effect */
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds a shadow for depth */
+    padding: 10px 0;
 }
 
-nav ul{
-    display:flex ;
+.navbar ul{
+    display: flex;
+    justify-content: space-between; /* Spreads items evenly */
     align-items: center;
     list-style-type: none;
-    height: 50px;
-    background-color: rgb(0, 0, 0);
-    color: whitesmoke;
+    padding: 0;
 }
 
 nav ul li{
-    padding: 0 12px;
+    margin: 0 20px;
 }
-
-ul a{
-    color: white;
+.navbar a {
+    color: #ffffff; /* Light color for contrast */
     text-decoration: none;
     font-weight: 600;
     font-size: 18px;
-    position: relative;
-    left: 600px;
-    padding-left: 30px;
+    padding: 10px 20px;
+    transition: color 0.3s ease, background 0.3s ease; /* Smooth transition on hover */
 }
 
-.homee a i{
+.navbar a:hover {
+    color: #1eded5; /* Highlight color on hover */
+    background: rgba(255, 255, 255, 0.1); /* Subtle background highlight on hover */
+    border-radius: 20px; /* Smooth rounded corners */
+}
+
+.Brand img {
     width: 40px;
-    color: whitesmoke;
+    height: 40px;
+    border-radius: 50%; /* Circular logo */
+    margin-right: 10px;
 }
-
-.Brand img{
-    width: 49px;
-    height: 45px;
-    padding: 0 6px;
-    border-radius: 20px;
-}
-
 .Brand {
     position: relative;
     display: flex;
     align-items: center;
-    font-weight: bolder;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.homee a i {
+    color: #f5f5f5;
+    transition: color 0.3s ease;
+}
+
+.homee a i:hover {
+    color: #1eded5; /* Hover effect on icons */
 }
 
 
+
 .container{
-    min-height: 70vh;
-    background: linear-gradient(to left, rgb(56, 53, 53),black);
+    min-height: 120vh;
     color: whitesmoke;
     font-family: 'Varela Round', sans-serif;
     display: flex;
@@ -72,6 +133,9 @@ ul a{
     border-radius: 12px;
     padding: 34px;
     background-size:cover ;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background for content */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5); /* Adds a soft shadow */
+    border-radius: 20px; /* Smooth corners */
 }
 
 .bottom{
@@ -96,8 +160,13 @@ ul a{
 
 .icons{
     position: relative;
-    top: 3vh;
+    top: 5px;
     
+}
+@media(min-width:1000px){
+    .icons{
+        top: 1vh;
+    }
 }
 
 .icons i{
@@ -111,45 +180,119 @@ ul a{
         font-size: 30px;
     }
 }
-#myProgressBar{
-    width: 80%;
-    margin-top: -10px;
-    margin-bottom: 0px;
-    position: absolute;
+#myProgressBar {
+    width: 100%;
+    height: 8px;  /* Increase height for better visibility */
+    background-color: #ddd;
+    border-radius: 5px;
+    position: relative;
     cursor: pointer;
+    top: -35px;
+    appearance: none;
+    transition: background-color 0.3s ease;
 }
+
+/* Style the slider track */
+#myProgressBar::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(to right,cyan,lightblue);
+    border-radius: 5px;
+    transition: background 0.2s ease;
+}
+
+/* Hover effect for better visual feedback */
+#myProgressBar:hover::-webkit-slider-runnable-track {
+    background: #ff0000;  /* Slightly darker when hovering */
+}
+
+/* Active state when user clicks or drags */
+#myProgressBar:active::-webkit-slider-runnable-track {
+    background: #ff0000;  /* Darker when clicked */
+}
+
+/* Style the thumb (draggable knob) */
+#myProgressBar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background-color: #1b83bc;
+    border-radius: 50%;  /* Make it a circle */
+    margin-top: -4px;  /* Center the thumb vertically */
+    transition: transform 0.2s ease;  /* Smooth transition when clicked */
+}
+
+/* Make the thumb scale up when hovering or active */
+#myProgressBar:hover::-webkit-slider-thumb {
+    transform: scale(1.2);  /* Slightly larger on hover */
+}
+
+#myProgressBar:active::-webkit-slider-thumb {
+    transform: scale(1.4);  /* Even larger when active */
+}
+
+/* Firefox (moz) compatibility */
+#myProgressBar::-moz-range-track {
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 5px;
+}
+#myProgressBar::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background-color: #333;
+    border-radius: 50%;
+    border: none;
+}
+
+/* Transition effect for smooth background color change */
+#myProgressBar {
+    transition: background-color 0.3s ease;
+}
+
+/* Visual transition when dragging */
+#myProgressBar:focus {
+    outline: none;  /* Remove default outline */
+}
+
 
 .songinfo #masterSongName{
     position: relative;
-    top: -50px;
+    top: -40px;
+    left: -150px;
 }
 
 @media(min-width:1000px){
     .songinfo #masterSongName{
-        top: -50px;
+        top: -20px;
     }
 }
 
 
 .songitemcontainer{
     margin-top: 60px;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .songItem{
     height: 70px;
     display: flex;
-    background-color: rgb(46, 42, 42);
+    background: rgba(255, 255, 255, 0.05); /* Lighter background for song items */
+    transition: background 0.3s ease;
     color: whitesmoke;
     margin: 12px 0;
     justify-content: space-between;
     align-items: center;
     border-radius: 34px;
+    font-family: 'Josefin Sans', sans-serif;
+}
+.songItem:hover {
+    background: rgba(255, 255, 255, 0.15); /* Highlight song item on hover */
+    transform: scale(1.05); /* Slight zoom effect on hover */
 }
 
 .songItem i{
     margin-left: 20px;
-    margin-right: 20px;
-    color: white;
 }
 .songItem img{
     width: 60px;
@@ -175,8 +318,9 @@ ul a{
 .songinfo img{
     opacity: 0;
     position: absolute;
-    top: -55px;
+    top: -30px;
     left: -60px;
+    left: -210px;
     transition: opacity 0.5s ease-in;
 }
 
@@ -207,10 +351,184 @@ ul a{
     font-family: Permanentmarker;
     font-weight: 600;
     color:  white;
-    min-width: 200px;
+    min-width: 120px;
 }
     
 .songItem span i{
-    color: goldenrod;
-    margin: 10px;
+    color: rgb(255, 255, 255);
+    margin-left: 40px;
+}
+
+ul li p{
+    font-size: 15px;
+}
+
+.icons i:hover {
+    color: #1eded5; /* Change the color on hover */
+    transform: scale(1.2); /* Increase size on hover */
+    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+.songItemPlay:hover {
+    color: #1abed0;
+    transform: scale(1.2);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.songItem img:hover, #loggo:hover {
+    transform: scale(1.1); /* Increase size on hover */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.songItem img:hover, #loggo:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+    70% {
+        transform: scale(1.2);
+        box-shadow: 0 0 10px 20px rgba(0, 4, 253, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 204, 0, 0);
+    }
+}
+
+.icons i:hover {
+    animation: pulse 1s infinite;
+}
+
+.songItemPlay:hover {
+    animation: pulse 1s infinite;
+}
+
+.songItem img:hover::before {
+    content: "Now Playing";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.songItem img:hover::before {
+    opacity: 1;
+}
+
+.download-button {
+    background: linear-gradient(to right, #000000, #ffffff);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    background-size: 45px;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.download-button:hover {
+    background-size: 45px;
+    background-repeat: no-repeat;
+    background: linear-gradient(to right, #ffffff, #000000);
+    cursor: pointer;
+}
+
+.songItem {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.songItem.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#masterPlay {
+    background-color: #020101; /* Background color for the button */
+    border-radius: 50%; /* Make the button round */
+    padding: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+#masterPlay.fa-circle-play {
+    background-color: #48b9c1; /* Green background for play */
+    color: rgb(0, 0, 0);
+}
+
+#masterPlay.fa-circle-pause {
+    background-color: #164a8a; /* Red background for pause */
+    color: white;
+}
+
+#masterPlay:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+    cursor: pointer; /* Show pointer on hover */
+}
+
+.songItemPlay {
+    background-color: #333; /* Default background color */
+    border-radius: 50%; /* Make the icon round */
+    padding: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    color: white; /* Default icon color */
+}
+
+.songItemPlay.fa-circle-play {
+    background-color: #48b9c1; /* Green background for play */
+    color: black;
+}
+
+.songItemPlay.fa-circle-pause {
+    background-color: #164a8a; /* Red background for pause */
+}
+
+.songItemPlay:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+    cursor: pointer; /* Show pointer on hover */
+}
+
+.songItemPlay:active {
+    transform: scale(0.95); /* Slight shrink effect on click */
+}
+
+#next, #previous {
+    background-color: #333; /* Default background color */
+    color: white; /* Default icon color */
+    border-radius: 50%; /* Make the buttons round */
+    padding: 10px; /* Add padding to make the buttons larger */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover and click effects */
+}
+
+#next:hover, #previous:hover {
+    background-color: #164a8a; /* Change background color on hover */
+    transform: scale(1.1); /* Slight zoom effect on hover */
+    cursor: pointer; /* Show pointer on hover */
+}
+
+#next:active, #previous:active {
+    transform: scale(0.95); /* Slight shrink effect on click */
+    background-color: #48b9c1; /* Change color when clicked */
+}
+
+#currentTimeDisplay{
+    position: relative;
+    left: -130px;
+    top: -5px;
 }
