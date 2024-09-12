@@ -437,3 +437,69 @@ const observer = new IntersectionObserver((entries) => {
 
 songItems.forEach(item => observer.observe(item));
 
+
+document.getElementById('search-bar').addEventListener('input', function(e) {
+    const searchTerm = e.target.value.toLowerCase();
+    const songItems = document.querySelectorAll('.songItem');
+
+    songItems.forEach(item => {
+        const songName = item.querySelector('.songName').innerText.toLowerCase();
+        if (songName.includes(searchTerm)) {
+            item.style.display = ''; // Show matching items
+        } else {
+            item.style.display = 'none'; // Hide non-matching items
+        }
+    });
+});
+
+// Function to check if the search bar is focused
+const searchBar = document.getElementById('search-bar');
+
+// Function to handle keyboard shortcuts
+const handleKeyboardShortcuts = (e) => {
+    if (e.code === 'Space') {
+        e.preventDefault(); // Prevent space from scrolling the page
+        togglePlayPause();
+    }
+
+    if (e.code === 'KeyL') {
+        skipForward(5); // Skip forward 5 seconds
+    }
+
+    if (e.code === 'KeyJ') {
+        skipBackward(5); // Skip backward 5 seconds
+    }
+
+    if (e.code === 'KeyB') {
+        playPreviousSong(); // Play the previous song
+    }
+
+    if (e.code === 'KeyN') {
+        playNextSong(); // Play the next song
+    }
+
+    if (e.code === 'KeyK') {
+        togglePlayPause(); // Toggle play/pause
+    }
+
+    if (e.code === 'ArrowLeft') {
+        skipBackward(10); // Skip backward 10 seconds
+    }
+
+    if (e.code === 'ArrowRight') {
+        skipForward(10); // Skip forward 10 seconds
+    }
+};
+
+// Add the event listener for keyboard shortcuts
+document.addEventListener('keydown', handleKeyboardShortcuts);
+
+// Disable shortcuts when the search bar is focused
+searchBar.addEventListener('focus', () => {
+    document.removeEventListener('keydown', handleKeyboardShortcuts);
+});
+
+// Re-enable shortcuts when the search bar loses focus
+searchBar.addEventListener('blur', () => {
+    document.addEventListener('keydown', handleKeyboardShortcuts);
+});

@@ -139,7 +139,7 @@ nav ul li{
 }
 
 .bottom{
-    position: sticky;
+    position: fixed;
     height: 150px;
     width: 100%;
     background-color: black;
@@ -531,4 +531,52 @@ ul li p{
     position: relative;
     left: -130px;
     top: -5px;
+}
+
+.search-bar-container {
+    position: relative;
+    top: -40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#search-bar {
+    width: 250px;
+    position: relative;
+    top: -35px;
+    left: 500px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #1eded5;  /* Initial border color */
+    border-radius: 30px;
+    outline: none;
+    transition: border-color 0.4s ease, background-color 0.4s ease;
+    background-color: rgba(0, 0, 0, 0.5); /* Theme-based semi-transparent background */
+    color: white; /* Text color */
+}
+
+#search-bar:focus {
+    border-color: #48b9c1;  /* Change border color on focus */
+    background-color: rgba(255, 255, 255, 0.1);  /* Light background on focus */
+}
+
+#search-bar:hover {
+    border-color: #48b9c1;  /* Border color on hover */
+}
+
+@keyframes glowing-border {
+    0% {
+        border-color: #1eded5;
+    }
+    50% {
+        border-color: #48b9c1;
+    }
+    100% {
+        border-color: #1eded5;
+    }
+}
+
+#search-bar:focus {
+    animation: glowing-border 1.5s infinite;
 }
